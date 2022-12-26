@@ -1,0 +1,60 @@
+linters:
+  enable-all: false
+  enable:
+    - gofmt
+    - govet
+    - staticcheck
+    - gci
+    - gocyclo
+    - nakedret
+    - gochecknoglobals
+    - gochecknoinits
+    - gosimple
+    - goconst
+    - misspell
+    - unconvert
+    - varcheck
+    - unused
+    - deadcode
+    - unparam
+    - ineffassign
+    - prealloc
+    - gosec
+    - godot
+    - bodyclose
+    - rowserrcheck
+    - whitespace
+  disable:
+    - errcheck
+
+linters-settings:
+  govet:
+    check-shadowing: true
+  golint:
+    min-confidence: 0
+  gocyclo:
+    min-complexity: 25
+  maligned:
+    suggest-new: true
+  dupl:
+    threshold: 100
+  goconst:
+    min-len: 2
+    min-occurrences: 2
+  lll:
+    line-length: 140
+  funlen:
+    lines: 120
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - goconst
+        - scopelint # To avoid warnings in table-driven tests combined with t.Run
+        - gochecknoglobals
+        - funlen
+        - dupl
+        - lll
+        - wsl
+        - unparam
